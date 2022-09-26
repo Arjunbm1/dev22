@@ -1,0 +1,30 @@
+schemaVersion: 2.2.0
+metadata:
+  name: kubcomponent
+  namespace: admin-che
+attributes:
+  che-theia.eclipse.org/sidecar-policy: mergeImage
+  metadata-name-field: generateName
+  metadata-name-original-value: kubcomponent
+projects:
+  - git:
+      remotes:
+        origin: 'https://github.com/Arjunbm1/kubcomponent.git'
+    name: kubcomponent
+components:
+  - kubernetes:
+      inlined: |
+        apiVersion: v1
+        kind: Pod
+        metadata:
+           name: podkub
+           namespace: admin-che
+        spec:
+          template:
+            spec:
+              containers:
+              - name: nginxkub
+                image: nginx
+                restartPolicy: Never
+      deployByDefault: true
+    name: myk8deploy
