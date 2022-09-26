@@ -27,4 +27,8 @@ components:
                 image: nginx
                 restartPolicy: Never
       deployByDefault: true
+      endpoints:
+      - name: web
+        targetPort: 8080
+        exposure: public
     name: myk8deploy
